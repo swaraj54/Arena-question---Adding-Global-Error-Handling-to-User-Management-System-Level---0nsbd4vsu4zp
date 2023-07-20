@@ -8,11 +8,14 @@ const JWT_SECRET = 'newtonSchool';
 const signup = async (req, res, next) => {
     try {
         const { username, email, password } = req.body;
+
+
         const user = await User.create({
             username,
             email,
             password,
         });
+        // console.log(user,"- user here")
         res.status(201).json({
             status: 'success',
             data: {
@@ -20,6 +23,7 @@ const signup = async (req, res, next) => {
             },
         });
     } catch (err) {
+        // console.log(err, "insdie catch error")
         next(err);
     }
 }
